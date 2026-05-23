@@ -1,0 +1,198 @@
+{
+  "info": {
+    "name": "PdfEditor MVP",
+    "_postman_id": "b54d6df0-b48d-4fdb-b5d3-14fcb4b7f9ce",
+    "description": "Local API workflow collection for the PdfEditor MVP.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:5144"
+    },
+    {
+      "key": "accessToken",
+      "value": ""
+    },
+    {
+      "key": "documentId",
+      "value": "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"
+    }
+  ],
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Login Owner",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"emailAddress\": \"owner@pdfeditor.local\",\n  \"password\": \"Password123!\"\n}"
+            },
+            "url": "{{baseUrl}}/api/v1/auth/login"
+          }
+        },
+        {
+          "name": "Login Editor",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"emailAddress\": \"editor@pdfeditor.local\",\n  \"password\": \"Password123!\"\n}"
+            },
+            "url": "{{baseUrl}}/api/v1/auth/login"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Documents",
+      "item": [
+        {
+          "name": "List Documents",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}"
+              }
+            ],
+            "url": "{{baseUrl}}/api/v1/documents"
+          }
+        },
+        {
+          "name": "Get Document Details",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}"
+              }
+            ],
+            "url": "{{baseUrl}}/api/v1/documents/{{documentId}}"
+          }
+        },
+        {
+          "name": "Download Original",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}"
+              }
+            ],
+            "url": "{{baseUrl}}/api/v1/documents/{{documentId}}/download"
+          }
+        },
+        {
+          "name": "Soft Delete Document",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}"
+              }
+            ],
+            "url": "{{baseUrl}}/api/v1/documents/{{documentId}}"
+          }
+        },
+        {
+          "name": "Restore Document",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}"
+              }
+            ],
+            "url": "{{baseUrl}}/api/v1/documents/{{documentId}}/restore"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Annotations",
+      "item": [
+        {
+          "name": "Get Annotations",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}"
+              }
+            ],
+            "url": "{{baseUrl}}/api/v1/documents/{{documentId}}/annotations"
+          }
+        },
+        {
+          "name": "Add Text Annotation",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"documentVersionId\": \"bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb\",\n  \"annotationType\": \"Text\",\n  \"pageNumber\": 1,\n  \"annotationPayloadJson\": \"{\\\"text\\\":\\\"Add review note\\\",\\\"x\\\":140,\\\"y\\\":160}\"\n}"
+            },
+            "url": "{{baseUrl}}/api/v1/documents/{{documentId}}/annotations"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Compression",
+      "item": [
+        {
+          "name": "Queue Compression",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"compressionProfile\": \"Balanced\"\n}"
+            },
+            "url": "{{baseUrl}}/api/v1/documents/{{documentId}}/compress"
+          }
+        }
+      ]
+    }
+  ]
+}

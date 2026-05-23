@@ -1,0 +1,106 @@
+﻿<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Merge PDF | PdfEditor</title>
+<link rel="stylesheet" href="/app.phase1.css?v=20260423-2" />
+  </head>
+  <body data-page="merge">
+    <div class="site-shell">
+      <header class="site-header">
+        <div class="site-header-inner">
+          <a class="brand-lockup" href="/">
+            <span class="brand-badge">PDF</span>
+            <span class="brand-wordmark">PdfEditor</span>
+          </a>
+          <nav class="site-nav">
+            <a data-nav-link="merge" href="/merge">Merge PDF</a>
+            <a data-nav-link="split" href="/split">Split PDF</a>
+            <a data-nav-link="compress" href="/compress">Compress PDF</a>
+            <a href="/all-tools#convert-tools">Convert PDF</a>
+            <div class="nav-dropdown">
+              <a data-nav-link="all-tools" href="/all-tools">All PDF Tools</a>
+              <div class="nav-mega">
+                <div class="nav-mega-column">
+                  <span class="nav-mega-heading">Organize PDF</span>
+                  <a href="/merge">Merge PDF</a>
+                  <a href="/split">Split PDF</a>
+                  <a href="/edit">Edit PDF</a>
+                </div>
+                <div class="nav-mega-column">
+                  <span class="nav-mega-heading">Optimize PDF</span>
+                  <a href="/compress">Compress PDF</a>
+                </div>
+                <div class="nav-mega-column">
+                  <span class="nav-mega-heading">Convert PDF</span>
+                  <span class="nav-mega-soon">PDF to Word · Coming soon</span>
+                  <span class="nav-mega-soon">PDF to PowerPoint · Coming soon</span>
+                </div>
+              </div>
+            </div>
+          </nav>
+          <div class="topbar-actions" data-auth-actions></div>
+        </div>
+      </header>
+
+      <main class="workspace-root">
+        <section class="tool-hero">
+          <span class="section-kicker">Merge PDF</span>
+          <h1>Combine multiple PDFs into one clean output file.</h1>
+          <p>Choose the files, keep their order, merge them, then preview the combined result before downloading or saving.</p>
+        </section>
+
+        <section class="tool-workspace">
+          <section class="workspace-canvas-panel">
+            <div id="merge-session-summary" class="session-meta-grid empty-state">
+              <div class="meta-card empty-card">
+                <strong>No merged PDF yet</strong>
+                <span>Pick at least two PDFs on the right and start the merge flow.</span>
+              </div>
+            </div>
+            <div class="viewer-canvas">
+              <iframe id="merge-pdf-viewer" class="pdf-viewer" title="Merged PDF preview"></iframe>
+            </div>
+          </section>
+
+          <aside class="workspace-sidebar">
+            <div class="sidebar-panel">
+              <h2>Files to merge</h2>
+              <form id="merge-upload-form" class="panel-form">
+                <label>
+                  <span>Document title</span>
+                  <input id="merge-title" type="text" placeholder='Leave blank to use "Merged PDF"' />
+                </label>
+                <label>
+                  <span>PDF files</span>
+                  <input id="merge-files" class="file-input" type="file" accept="application/pdf,.pdf" multiple />
+                </label>
+                <div id="merge-selected-files" class="file-pill-list empty-state">
+                  <span class="file-pill empty-pill">Select at least two PDF files to merge.</span>
+                </div>
+                <button class="primary-button wide-button" type="submit">Merge PDFs</button>
+              </form>
+              <div id="merge-status" class="status-line">Choose multiple PDFs to start the merge flow.</div>
+            </div>
+
+            <div class="sidebar-panel">
+              <h3>Output actions</h3>
+              <button id="save-merged-document" class="secondary-button wide-button" type="button">Save to my documents</button>
+              <a id="download-merged-file" class="ghost-button wide-button disabled-link" href="#" aria-disabled="true">Download merged PDF</a>
+            </div>
+          </aside>
+        </section>
+      </main>
+    </div>
+<script src="/app.phase1.js?v=20260423-2"></script>
+  </body>
+</html>
+
+
+
+
+
+
+
+

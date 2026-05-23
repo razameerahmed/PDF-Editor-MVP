@@ -1,0 +1,8 @@
+.vs/
+runtime/
+**/bin/
+**/obj/
+**/node_modules/
+**/dist/
+*.tsbuildinfo
+*.log

@@ -1,0 +1,117 @@
+﻿<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Split PDF | PdfEditor</title>
+<link rel="stylesheet" href="/app.phase1.css?v=20260423-2" />
+  </head>
+  <body data-page="split">
+    <div class="site-shell">
+      <header class="site-header">
+        <div class="site-header-inner">
+          <a class="brand-lockup" href="/">
+            <span class="brand-badge">PDF</span>
+            <span class="brand-wordmark">PdfEditor</span>
+          </a>
+          <nav class="site-nav">
+            <a data-nav-link="merge" href="/merge">Merge PDF</a>
+            <a data-nav-link="split" href="/split">Split PDF</a>
+            <a data-nav-link="compress" href="/compress">Compress PDF</a>
+            <a href="/all-tools#convert-tools">Convert PDF</a>
+            <div class="nav-dropdown">
+              <a data-nav-link="all-tools" href="/all-tools">All PDF Tools</a>
+              <div class="nav-mega">
+                <div class="nav-mega-column">
+                  <span class="nav-mega-heading">Organize PDF</span>
+                  <a href="/merge">Merge PDF</a>
+                  <a href="/split">Split PDF</a>
+                  <a href="/edit">Edit PDF</a>
+                </div>
+                <div class="nav-mega-column">
+                  <span class="nav-mega-heading">Optimize PDF</span>
+                  <a href="/compress">Compress PDF</a>
+                </div>
+                <div class="nav-mega-column">
+                  <span class="nav-mega-heading">Convert PDF</span>
+                  <span class="nav-mega-soon">PDF to Word · Coming soon</span>
+                  <span class="nav-mega-soon">PDF to PowerPoint · Coming soon</span>
+                </div>
+              </div>
+            </div>
+          </nav>
+          <div class="topbar-actions" data-auth-actions></div>
+        </div>
+      </header>
+
+      <main class="workspace-root">
+        <section class="tool-hero">
+          <span class="section-kicker">Split PDF</span>
+          <h1>Break one PDF into multiple downloadable files.</h1>
+          <p>Upload a PDF, define page ranges like 1-3 or 4-6, run the split, and download each output file separately.</p>
+        </section>
+
+        <section class="tool-workspace">
+          <section class="workspace-canvas-panel">
+            <div id="split-session-summary" class="session-meta-grid empty-state">
+              <div class="meta-card empty-card">
+                <strong>No PDF loaded yet</strong>
+                <span>Upload a source PDF on the right before you define ranges.</span>
+              </div>
+            </div>
+            <div class="viewer-canvas">
+              <iframe id="split-pdf-viewer" class="pdf-viewer" title="Split PDF preview"></iframe>
+            </div>
+          </section>
+
+          <aside class="workspace-sidebar">
+            <div class="sidebar-panel">
+              <h2>Upload source PDF</h2>
+              <form id="split-upload-form" class="panel-form">
+                <label>
+                  <span>Document title</span>
+                  <input id="split-title" type="text" placeholder="Leave blank to use the file name" />
+                </label>
+                <label>
+                  <span>PDF file</span>
+                  <input id="split-file" class="file-input" type="file" accept="application/pdf,.pdf" />
+                </label>
+                <button class="primary-button wide-button" type="submit">Upload PDF</button>
+              </form>
+              <div id="split-status" class="status-line">Upload a PDF to begin defining split ranges.</div>
+            </div>
+
+            <div class="sidebar-panel">
+              <div class="sidebar-panel-header">
+                <h3>Ranges</h3>
+                <button id="add-split-range" class="secondary-button" type="button">Add range</button>
+              </div>
+              <div id="split-ranges" class="range-list"></div>
+              <button id="run-split" class="primary-button wide-button" type="button">Split PDF</button>
+              <div id="split-operation-status" class="status-line">Range results will appear here.</div>
+            </div>
+
+            <div class="sidebar-panel">
+              <h3>Split outputs</h3>
+              <div id="split-results" class="artifact-list empty-state">
+                <div class="artifact-card artifact-card--empty">
+                  <strong>No split files yet</strong>
+                  <span>Run the split to generate downloadable PDFs for each range.</span>
+                </div>
+              </div>
+            </div>
+          </aside>
+        </section>
+      </main>
+    </div>
+<script src="/app.phase1.js?v=20260423-2"></script>
+  </body>
+</html>
+
+
+
+
+
+
+
+

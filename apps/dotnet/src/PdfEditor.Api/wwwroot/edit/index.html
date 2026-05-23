@@ -1,0 +1,417 @@
+﻿<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Edit PDF | PdfEditor</title>
+    <link rel="stylesheet" href="/app.phase1.css?v=20260423-2" />
+  </head>
+  <body data-page="edit">
+    <div class="site-shell">
+      <header class="site-header">
+        <div class="site-header-inner">
+          <a class="brand-lockup" href="/">
+            <span class="brand-badge">PDF</span>
+            <span class="brand-wordmark">PdfEditor</span>
+          </a>
+          <nav class="site-nav">
+            <a data-nav-link="merge" href="/merge">Merge PDF</a>
+            <a data-nav-link="split" href="/split">Split PDF</a>
+            <a data-nav-link="compress" href="/compress">Compress PDF</a>
+            <a href="/all-tools#convert-tools">Convert PDF</a>
+            <div class="nav-dropdown">
+              <a data-nav-link="all-tools" href="/all-tools">All PDF Tools</a>
+              <div class="nav-mega">
+                <div class="nav-mega-column">
+                  <span class="nav-mega-heading">Organize PDF</span>
+                  <a href="/merge">Merge PDF</a>
+                  <a href="/split">Split PDF</a>
+                  <a href="/edit">Edit PDF</a>
+                </div>
+                <div class="nav-mega-column">
+                  <span class="nav-mega-heading">Optimize PDF</span>
+                  <a href="/compress">Compress PDF</a>
+                  <a href="/edit#ocr-workspace">OCR PDF</a>
+                </div>
+                <div class="nav-mega-column">
+                  <span class="nav-mega-heading">Convert PDF</span>
+                  <span class="nav-mega-soon">PDF to Word - Coming soon</span>
+                  <span class="nav-mega-soon">PDF to PowerPoint - Coming soon</span>
+                </div>
+              </div>
+            </div>
+          </nav>
+          <div class="topbar-actions" data-auth-actions></div>
+        </div>
+      </header>
+
+      <main class="workspace-root workspace-root--editor">
+        <section class="tool-hero tool-hero--editor">
+          <span class="section-kicker">Edit PDF</span>
+          <h1>Work in a near-fullscreen editor workspace.</h1>
+          <p>Upload a PDF, preview it in the canvas, then run rotate, delete, and reorder from the editor side panel.</p>
+        </section>
+
+        <section class="editor-shell" id="editor-shell">
+          <aside class="editor-rail" id="editor-rail">
+            <div class="rail-panel" data-editor-panel="upload">
+              <h2>Upload PDF</h2>
+              <form id="edit-upload-form" class="panel-form">
+                <label>
+                  <span>Document title</span>
+                  <input id="edit-title" type="text" placeholder="Leave blank to use the file name" />
+                </label>
+                <label>
+                  <span>PDF file</span>
+                  <input id="edit-file" class="file-input" type="file" accept="application/pdf,.pdf" />
+                </label>
+                <button class="primary-button wide-button" type="submit">Open in editor</button>
+              </form>
+              <div id="edit-status" class="status-line">Upload a PDF to open the editor workspace.</div>
+            </div>
+
+            <div class="rail-panel" data-editor-panel="pages">
+              <div class="rail-heading">
+                <h3>Pages</h3>
+                <span class="rail-count" id="edit-page-count">0</span>
+              </div>
+              <div id="edit-page-rail" class="page-rail empty-state">
+                <div class="page-thumb empty-thumb">Upload a PDF to load page thumbnails.</div>
+              </div>
+            </div>
+          </aside>
+
+          <button class="editor-resize-handle editor-resize-handle--left" type="button" data-editor-resize="left" aria-label="Resize page rail"></button>
+
+          <section class="editor-canvas-panel" id="edit-canvas-panel">
+            <div class="floating-editor-toolbar" id="editor-floating-toolbar">
+              <button class="toolbar-button toolbar-button--active" type="button" data-toolbar-action="edit">Edit</button>
+              <button class="toolbar-button" type="button" data-toolbar-action="organize">Organize</button>
+              <button class="toolbar-button" type="button" data-toolbar-action="review">Review</button>
+              <button class="toolbar-button" type="button" data-toolbar-action="attachments">Attachments</button>
+              <button class="toolbar-button toolbar-button--accent" type="button" data-toolbar-action="save">Save</button>
+              <button class="toolbar-button" type="button" data-toolbar-action="download">Download</button>
+            </div>
+            <div class="viewer-canvas viewer-canvas--editor" id="edit-viewer-canvas">
+              <div class="pdfjs-stage">
+                <div class="pdfjs-viewer-toolbar" id="edit-viewer-toolbar">
+                  <div class="pdfjs-control-group">
+                    <button class="pdfjs-control-button" id="edit-zoom-out" type="button" aria-label="Zoom out">-</button>
+                    <button class="pdfjs-control-button" id="edit-fit-width" type="button">Fit width</button>
+                    <button class="pdfjs-control-button" id="edit-zoom-in" type="button" aria-label="Zoom in">+</button>
+                  </div>
+                  <div class="pdfjs-control-group">
+                    <span class="pdfjs-toolbar-chip" id="edit-zoom-level">100%</span>
+                    <span class="pdfjs-toolbar-chip" id="edit-current-page">Page 0 / 0</span>
+                  </div>
+                </div>
+                <div class="pdfjs-empty-state" id="edit-viewer-empty">Upload a PDF to open a live preview.</div>
+                <div class="pdfjs-scroll-panel" id="edit-viewer-scroll" hidden>
+                  <div class="pdfjs-page-stack" id="edit-viewer-pages"></div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <button class="editor-resize-handle editor-resize-handle--right" type="button" data-editor-resize="right" aria-label="Resize details panel"></button>
+
+          <aside class="editor-sidebar" id="editor-sidebar">
+            <div class="sidebar-panel sidebar-panel--active" data-editor-panel="edit">
+              <h2>Edit PDF</h2>
+              <div id="edit-document-summary" class="session-meta-grid empty-state">
+                <div class="meta-card empty-card">
+                  <strong>No PDF loaded yet</strong>
+                  <span>Upload a PDF to see file details and work inside the editor.</span>
+                </div>
+              </div>
+              <div class="editor-toolbox">
+                <div class="rail-heading">
+                  <h3>Existing text editing</h3>
+                  <span class="rail-count" id="detected-text-count">0</span>
+                </div>
+                <div class="editor-sidebar-list-shell editor-sidebar-list-shell--resizable">
+                  <div class="rail-heading">
+                    <h3>Detected text</h3>
+                    <span class="rail-count" id="text-object-selected-count">0</span>
+                  </div>
+                  <label>
+                    <span>Search detected text</span>
+                    <input id="detected-text-search" type="search" placeholder="Find text inside the PDF" autocomplete="off" spellcheck="false" />
+                  </label>
+                  <div id="detected-text-list" class="editor-sidebar-list editor-sidebar-list--resizable empty-state">
+                    <div class="editor-sidebar-empty">Load a PDF to scan the text that can be edited.</div>
+                  </div>
+                  <label>
+                    <span>Edit selected text</span>
+                    <textarea id="detected-text-value" rows="4" placeholder="Select detected PDF text to change it"></textarea>
+                  </label>
+                  <div class="editor-style-grid">
+                    <label>
+                      <span>Font</span>
+                      <input id="detected-text-font-name" list="detected-text-font-options" type="text" placeholder="Search installed Windows fonts" autocomplete="off" />
+                      <datalist id="detected-text-font-options"></datalist>
+                    </label>
+                    <label>
+                      <span>Font size</span>
+                      <input id="detected-text-font-size" type="number" min="6" max="144" step="0.1" placeholder="12" />
+                    </label>
+                    <label>
+                      <span>Color</span>
+                      <input id="detected-text-color" type="color" value="#0f172a" />
+                    </label>
+                    <div class="editor-style-toggle-group" role="group" aria-label="Text style">
+                      <button id="detected-text-bold" class="editor-style-toggle" type="button" aria-pressed="false">B</button>
+                      <button id="detected-text-italic" class="editor-style-toggle" type="button" aria-pressed="false">I</button>
+                    </div>
+                  </div>
+                  <div class="editor-tool-actions">
+                    <button id="copy-selected-text" class="ghost-button wide-button" type="button">Copy</button>
+                    <button id="paste-duplicated-text" class="ghost-button wide-button" type="button">Paste</button>
+                    <button id="refresh-detected-text" class="ghost-button wide-button" type="button">Refresh text scan</button>
+                    <button id="apply-text-change" class="secondary-button wide-button" type="button">Apply text change</button>
+                  </div>
+                  <div class="editor-shortcut-hint">
+                    <code>Ctrl/Cmd+C</code> copy, <code>Ctrl/Cmd+V</code> paste, <code>Ctrl/Cmd+D</code> duplicate, arrow keys move, <code>Alt</code> + arrow keys resize, <code>Delete</code> removes selected text.
+                  </div>
+                  <div id="detected-text-status" class="status-line">Detected text and replacement updates will appear here.</div>
+                </div>
+                <div class="editor-organize-card" id="ocr-workspace">
+                  <h3>OCR scanned PDF</h3>
+                  <div class="panel-form">
+                    <label>
+                      <span>OCR language</span>
+                      <input id="ocr-language-code" type="text" value="eng" placeholder="eng or eng+urd" />
+                    </label>
+                    <label>
+                      <span>Page range</span>
+                      <input id="ocr-page-range" type="text" placeholder="All pages or 1,3-5" />
+                    </label>
+                    <label class="inline-checkbox">
+                      <input id="ocr-deskew" type="checkbox" checked />
+                      <span>Deskew low-quality scans before OCR</span>
+                    </label>
+                    <label class="inline-checkbox">
+                      <input id="ocr-force" type="checkbox" />
+                      <span>Force OCR even if text already exists</span>
+                    </label>
+                  </div>
+                  <div class="editor-tool-actions">
+                    <button id="run-editor-ocr" class="secondary-button wide-button" type="button">Run OCR on current PDF</button>
+                  </div>
+                  <div id="ocr-status" class="status-line">Use OCR when a PDF is scanned or its text is not selectable yet.</div>
+                </div>
+                <div class="editor-tool-actions">
+                  <button id="save-edited-document" class="secondary-button wide-button" type="button">Save to my documents</button>
+                  <a id="download-edited-file" class="ghost-button wide-button disabled-link" href="#" aria-disabled="true">Download current PDF</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="sidebar-panel" data-editor-panel="organize">
+              <h2>Organize PDF</h2>
+              <div class="editor-toolbox">
+                <div class="editor-organize-card">
+                  <h3>Rotate pages</h3>
+                  <form id="rotate-inline-form" class="panel-form">
+                    <label>
+                      <span>Page numbers</span>
+                      <input id="rotate-page-numbers" type="text" placeholder="1,3,4" />
+                    </label>
+                    <label>
+                      <span>Degrees</span>
+                      <select id="rotate-degrees">
+                        <option value="90">90</option>
+                        <option value="180">180</option>
+                        <option value="270">270</option>
+                      </select>
+                    </label>
+                    <button class="primary-button wide-button" type="submit">Rotate pages</button>
+                  </form>
+                </div>
+                <div class="editor-organize-card">
+                  <h3>Delete pages</h3>
+                  <form id="delete-inline-form" class="panel-form">
+                    <label>
+                      <span>Page numbers</span>
+                      <input id="delete-page-numbers" type="text" placeholder="2,5" />
+                    </label>
+                    <button class="secondary-button wide-button" type="submit">Delete pages</button>
+                  </form>
+                </div>
+                <div class="editor-organize-card">
+                  <h3>Reorder pages</h3>
+                  <form id="reorder-inline-form" class="panel-form">
+                    <label>
+                      <span>Full page order</span>
+                      <input id="reorder-page-numbers" type="text" placeholder="2,1,3,4" />
+                    </label>
+                    <button class="secondary-button wide-button" type="submit">Apply page order</button>
+                  </form>
+                </div>
+                <div class="editor-organize-card editor-organize-card--future">
+                  <h3>Next organize tools</h3>
+                  <p>Extract, insert, replace, crop, and page labels will live in this same organize workspace.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="sidebar-panel" data-editor-panel="review">
+              <h2>Review and annotations</h2>
+              <div class="editor-toolbox">
+                <div class="rail-heading">
+                  <h3>Annotation tools</h3>
+                  <span class="rail-count" id="annotation-selected-count">0</span>
+                </div>
+                <div class="editor-tool-chip-group" id="editor-annotation-tool-group">
+                  <button class="editor-tool-chip editor-tool-chip--active" type="button" data-editor-tool="select">Select</button>
+                  <button class="editor-tool-chip" type="button" data-editor-tool="text">Text</button>
+                  <button class="editor-tool-chip" type="button" data-editor-tool="highlight">Highlight</button>
+                  <button class="editor-tool-chip" type="button" data-editor-tool="rectangle">Rectangle</button>
+                  <button class="editor-tool-chip" type="button" data-editor-tool="draw">Draw</button>
+                </div>
+                <div class="panel-form">
+                  <label>
+                    <span>Text content</span>
+                    <input id="annotation-text-value" type="text" placeholder="Type text for a new text annotation" />
+                  </label>
+                  <label>
+                    <span>Color</span>
+                    <input id="annotation-color-value" type="color" value="#ff4f44" />
+                  </label>
+                  <label>
+                    <span>Stroke width</span>
+                    <input id="annotation-stroke-width" type="range" min="1" max="8" value="3" />
+                  </label>
+                </div>
+                <div class="editor-tool-actions">
+                  <button id="save-editor-annotations" class="secondary-button wide-button" type="button">Save annotation state</button>
+                  <button id="delete-selected-annotation" class="ghost-button wide-button" type="button">Delete selected annotation</button>
+                </div>
+                <div id="annotation-status" class="status-line">Annotation changes will appear here.</div>
+                <div class="editor-sidebar-list-shell editor-sidebar-list-shell--resizable">
+                  <div class="rail-heading">
+                    <h3>Added annotations</h3>
+                    <span class="rail-count" id="annotation-list-count">0</span>
+                  </div>
+                  <div id="annotation-list" class="editor-sidebar-list editor-sidebar-list--resizable empty-state">
+                    <div class="editor-sidebar-empty">Add an annotation to see it listed here.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="sidebar-panel" data-editor-panel="attachments">
+              <h2>Attachments and objects</h2>
+              <div class="editor-toolbox">
+                <div class="editor-organize-card">
+                  <h3>Add document attachment</h3>
+                  <div class="panel-form">
+                    <label>
+                      <span>Attachment file</span>
+                      <input id="attachment-file-input" class="file-input" type="file" />
+                    </label>
+                    <button id="add-document-attachment" class="secondary-button wide-button" type="button">Add file attachment</button>
+                  </div>
+                </div>
+                <div class="editor-organize-card">
+                  <h3>Add image object</h3>
+                  <div class="panel-form">
+                    <label>
+                      <span>Image file</span>
+                      <input id="attachment-image-file" class="file-input" type="file" accept="image/*" />
+                    </label>
+                    <button id="add-image-object" class="secondary-button wide-button" type="button">Add image to current page</button>
+                  </div>
+                </div>
+                <div class="editor-organize-card">
+                  <h3>Add link object</h3>
+                  <div class="panel-form">
+                    <label>
+                      <span>Link label</span>
+                      <input id="attachment-link-label" type="text" placeholder="Open website" />
+                    </label>
+                    <label>
+                      <span>Link URL</span>
+                      <input id="attachment-link-url" type="url" placeholder="https://example.com" />
+                    </label>
+                    <button id="add-link-object" class="secondary-button wide-button" type="button">Add link object</button>
+                  </div>
+                </div>
+                <div class="editor-organize-card">
+                  <h3>Object order</h3>
+                  <div class="editor-tool-actions">
+                    <button id="bring-selected-object-forward" class="ghost-button wide-button" type="button">Bring selected object forward</button>
+                    <button id="send-selected-object-back" class="ghost-button wide-button" type="button">Send selected object back</button>
+                  </div>
+                </div>
+                <div class="editor-sidebar-list-shell editor-sidebar-list-shell--resizable">
+                  <div class="rail-heading">
+                    <h3>Document attachments</h3>
+                    <span class="rail-count" id="document-attachment-count">0</span>
+                  </div>
+                  <div id="document-attachment-list" class="editor-sidebar-list editor-sidebar-list--resizable empty-state">
+                    <div class="editor-sidebar-empty">Add a file attachment to manage it here.</div>
+                  </div>
+                </div>
+                <div class="editor-sidebar-list-shell editor-sidebar-list-shell--resizable">
+                  <div class="rail-heading">
+                    <h3>Image and link objects</h3>
+                    <span class="rail-count" id="attachment-object-count">0</span>
+                  </div>
+                  <div id="attachment-object-list" class="editor-sidebar-list editor-sidebar-list--resizable empty-state">
+                    <div class="editor-sidebar-empty">Add an image or link object to manage it here.</div>
+                  </div>
+                </div>
+                <div id="attachment-status" class="status-line">Attachment and object updates will appear here.</div>
+              </div>
+            </div>
+
+            <div class="sidebar-panel sidebar-panel--status">
+              <div id="edit-operation-status" class="status-line">Editor tool results will appear here.</div>
+            </div>
+          </aside>
+        </section>
+      </main>
+    </div>
+    <div id="editor-context-menu-backdrop" class="editor-context-menu-backdrop" hidden></div>
+    <div id="editor-context-menu" class="editor-context-menu" hidden>
+      <div class="editor-context-group">
+        <button class="editor-context-item" type="button" data-context-action="tool-select">Select tool</button>
+        <button class="editor-context-item" type="button" data-context-action="tool-text">Text annotation</button>
+        <button class="editor-context-item" type="button" data-context-action="tool-highlight">Highlight annotation</button>
+        <button class="editor-context-item" type="button" data-context-action="tool-rectangle">Rectangle annotation</button>
+        <button class="editor-context-item" type="button" data-context-action="tool-draw">Freehand draw</button>
+      </div>
+      <div class="editor-context-group">
+        <button class="editor-context-item" type="button" data-context-action="show-edit">Open Edit tools</button>
+        <button class="editor-context-item" type="button" data-context-action="show-organize">Open Organize tools</button>
+        <button class="editor-context-item" type="button" data-context-action="show-review">Open Review tools</button>
+        <button class="editor-context-item" type="button" data-context-action="show-attachments">Open Attachments tools</button>
+      </div>
+      <div class="editor-context-group">
+        <button class="editor-context-item" type="button" data-context-action="copy-selected-text">Copy</button>
+        <button class="editor-context-item" type="button" data-context-action="paste-text-duplicate">Paste</button>
+        <button class="editor-context-item" type="button" data-context-action="save-annotations">Save annotation state</button>
+        <button class="editor-context-item" type="button" data-context-action="delete-selected-annotation">Delete selected annotation</button>
+        <button class="editor-context-item" type="button" data-context-action="refresh-detected-text">Refresh detected text</button>
+        <button class="editor-context-item" type="button" data-context-action="focus-selected-text">Edit selected text</button>
+      </div>
+      <div class="editor-context-group">
+        <button class="editor-context-item" type="button" data-context-action="bring-object-forward">Bring object forward</button>
+        <button class="editor-context-item" type="button" data-context-action="send-object-back">Send object back</button>
+      </div>
+      <div class="editor-context-group">
+        <button class="editor-context-item" type="button" data-context-action="save-document">Save PDF</button>
+        <button class="editor-context-item" type="button" data-context-action="download-pdf">Download PDF</button>
+      </div>
+    </div>
+    <script src="/app.phase1.js?v=20260423-2"></script>
+  </body>
+</html>
+
+
+
+
+
+
+

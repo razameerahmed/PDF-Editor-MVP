@@ -1,0 +1,74 @@
+﻿<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sign Up | PdfEditor</title>
+<link rel="stylesheet" href="/app.phase1.css?v=20260423-2" />
+  </head>
+  <body data-page="signup">
+    <div class="site-shell">
+      <header class="site-header">
+        <div class="site-header-inner">
+          <a class="brand-lockup" href="/">
+            <span class="brand-badge">PDF</span>
+            <span class="brand-wordmark">PdfEditor</span>
+          </a>
+          <nav class="site-nav">
+            <a data-nav-link="merge" href="/merge">Merge PDF</a>
+            <a data-nav-link="split" href="/split">Split PDF</a>
+            <a data-nav-link="compress" href="/compress">Compress PDF</a>
+            <a href="/all-tools#convert-tools">Convert PDF</a>
+            <div class="nav-dropdown">
+              <a data-nav-link="all-tools" href="/all-tools">All PDF Tools</a>
+            </div>
+          </nav>
+          <div class="topbar-actions" data-auth-actions></div>
+        </div>
+      </header>
+
+      <main class="auth-layout">
+        <section class="auth-card auth-card--wide">
+          <span class="section-kicker">Sign up</span>
+          <h1>Create a local account for saved documents.</h1>
+          <p>Your account is used for saving document history, not for blocking access to the public tools.</p>
+          <form id="signup-form" class="panel-form panel-form--two-column">
+            <label>
+              <span>First name</span>
+              <input id="signup-first-name" type="text" />
+            </label>
+            <label>
+              <span>Last name</span>
+              <input id="signup-last-name" type="text" />
+            </label>
+            <label class="panel-form__full">
+              <span>Email address</span>
+              <input id="signup-email-address" type="email" />
+            </label>
+            <label>
+              <span>Password</span>
+              <input id="signup-password" type="password" />
+            </label>
+            <label>
+              <span>Confirm password</span>
+              <input id="signup-confirm-password" type="password" />
+            </label>
+            <div class="panel-form__full">
+              <button class="primary-button wide-button" type="submit">Create account</button>
+            </div>
+          </form>
+          <div id="signup-status" class="status-line">Use 8 or more characters for your password.</div>
+          <a class="ghost-link" href="/login">Already have an account? Login</a>
+        </section>
+      </main>
+    </div>
+<script src="/app.phase1.js?v=20260423-2"></script>
+  </body>
+</html>
+
+
+
+
+
+
+

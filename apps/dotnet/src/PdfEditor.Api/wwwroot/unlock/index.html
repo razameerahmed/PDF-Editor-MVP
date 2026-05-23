@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Unlock PDF | PdfEditor</title>
+<link rel="stylesheet" href="/app.phase1.css?v=20260423-2" />
+  </head>
+  <body data-page="unlock">
+    <div class="site-shell">
+      <header class="site-header">
+        <div class="site-header-inner">
+          <a class="brand-lockup" href="/">
+            <span class="brand-badge">PDF</span>
+            <span class="brand-wordmark">PdfEditor</span>
+          </a>
+          <nav class="site-nav">
+            <a data-nav-link="merge" href="/merge">Merge PDF</a>
+            <a data-nav-link="split" href="/split">Split PDF</a>
+            <a data-nav-link="compress" href="/compress">Compress PDF</a>
+            <a href="/all-tools#convert-tools">Convert PDF</a>
+            <div class="nav-dropdown">
+              <a data-nav-link="all-tools" href="/all-tools">All PDF Tools</a>
+              <div class="nav-mega">
+                <div class="nav-mega-column">
+                  <span class="nav-mega-heading">Organize PDF</span>
+                  <a href="/merge">Merge PDF</a>
+                  <a href="/split">Split PDF</a>
+                  <a href="/edit">Edit PDF</a>
+                </div>
+                <div class="nav-mega-column">
+                  <span class="nav-mega-heading">Optimize PDF</span>
+                  <a href="/compress">Compress PDF</a>
+                  <span class="nav-mega-soon">OCR PDF · Coming soon</span>
+                </div>
+                <div class="nav-mega-column">
+                  <span class="nav-mega-heading">PDF Security</span>
+                  <a href="/unlock">Unlock PDF</a>
+                  <span class="nav-mega-soon">Protect PDF · Coming soon</span>
+                </div>
+              </div>
+            </div>
+          </nav>
+          <div class="topbar-actions" data-auth-actions></div>
+        </div>
+      </header>
+
+      <main class="workspace-root">
+        <section class="tool-hero">
+          <span class="section-kicker">Unlock PDF</span>
+          <h1>Unlock protected PDFs in a dedicated security workspace.</h1>
+          <p>Upload a protected PDF, provide the password if needed, and create a new unlocked version. This tool is available for paid users only.</p>
+        </section>
+
+        <section class="tool-workspace">
+          <section class="workspace-canvas-panel">
+            <div id="unlock-session-summary" class="session-meta-grid empty-state">
+              <div class="meta-card empty-card">
+                <strong>No PDF loaded yet</strong>
+                <span>Upload a protected PDF on the right to review its security state and unlock it.</span>
+              </div>
+            </div>
+            <div class="viewer-canvas">
+              <div id="unlock-viewer-empty" class="pdfjs-empty-state">Upload a protected PDF to open the unlock workspace.</div>
+              <iframe id="unlock-pdf-viewer" class="pdf-viewer" title="Unlocked PDF preview" hidden></iframe>
+            </div>
+          </section>
+
+          <aside class="workspace-sidebar">
+            <div class="sidebar-panel">
+              <h2>Upload protected PDF</h2>
+              <form id="unlock-upload-form" class="panel-form">
+                <label>
+                  <span>Document title</span>
+                  <input id="unlock-title" type="text" placeholder="Leave blank to use the file name" />
+                </label>
+                <label>
+                  <span>PDF file</span>
+                  <input id="unlock-file" class="file-input" type="file" accept="application/pdf,.pdf" />
+                </label>
+                <button class="primary-button wide-button" type="submit">Upload PDF</button>
+              </form>
+              <div id="unlock-status" class="status-line">Upload a PDF to check whether it is locked and ready to unlock.</div>
+            </div>
+
+            <div class="sidebar-panel">
+              <div class="rail-heading">
+                <h3>Unlock details</h3>
+                <span class="rail-count" id="unlock-tier-chip">Free</span>
+              </div>
+              <p id="unlock-protection-summary" class="panel-helper-text">Protected PDF details will appear here after upload.</p>
+              <label>
+                <span>Password</span>
+                <input id="unlock-password" type="password" placeholder="Enter the PDF password if one is required" />
+              </label>
+              <button id="unlock-pdf-action" class="primary-button wide-button" type="button">Unlock PDF</button>
+              <div id="unlock-operation-status" class="status-line">Unlock progress and results will appear here.</div>
+            </div>
+
+            <div class="sidebar-panel">
+              <h3>Output actions</h3>
+              <button id="save-unlocked-document" class="secondary-button wide-button" type="button">Save to my documents</button>
+              <a id="download-unlocked-file" class="ghost-button wide-button disabled-link" href="#" aria-disabled="true">Download current PDF</a>
+            </div>
+          </aside>
+        </section>
+      </main>
+    </div>
+<script src="/app.phase1.js?v=20260423-2"></script>
+  </body>
+</html>

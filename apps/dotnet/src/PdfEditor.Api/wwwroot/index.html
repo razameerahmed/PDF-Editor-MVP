@@ -1,0 +1,193 @@
+﻿<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PdfEditor | Work with PDFs in one place</title>
+    <link rel="stylesheet" href="/app.phase1.css?v=20260423-2" />
+  </head>
+  <body data-page="home">
+    <div class="site-shell">
+      <header class="site-header">
+        <div class="site-header-inner">
+          <a class="brand-lockup" href="/">
+            <span class="brand-badge">PDF</span>
+            <span class="brand-wordmark">PdfEditor</span>
+          </a>
+          <nav class="site-nav">
+            <a data-nav-link="merge" href="/merge">Merge PDF</a>
+            <a data-nav-link="split" href="/split">Split PDF</a>
+            <a data-nav-link="compress" href="/compress">Compress PDF</a>
+            <a href="/all-tools#convert-tools">Convert PDF</a>
+            <div class="nav-dropdown">
+              <a data-nav-link="all-tools" href="/all-tools">All PDF Tools</a>
+              <div class="nav-mega">
+                <div class="nav-mega-column">
+                  <span class="nav-mega-heading">Organize PDF</span>
+                  <a href="/merge">Merge PDF</a>
+                  <a href="/split">Split PDF</a>
+                  <a href="/edit">Edit PDF</a>
+                  <span class="nav-mega-soon">Extract pages · Coming soon</span>
+                </div>
+                <div class="nav-mega-column">
+                  <span class="nav-mega-heading">Optimize PDF</span>
+                  <a href="/compress">Compress PDF</a>
+                  <a href="/edit#ocr-workspace">OCR PDF</a>
+                  <span class="nav-mega-soon">Repair PDF · Coming soon</span>
+                </div>
+                <div class="nav-mega-column">
+                  <span class="nav-mega-heading">Convert PDF</span>
+                  <span class="nav-mega-soon">PDF to Word · Coming soon</span>
+                  <span class="nav-mega-soon">PDF to PowerPoint · Coming soon</span>
+                  <span class="nav-mega-soon">Translate PDF · Coming soon</span>
+                </div>
+              </div>
+            </div>
+          </nav>
+          <div class="topbar-actions" data-auth-actions></div>
+        </div>
+      </header>
+
+      <main>
+        <section class="page-section catalog-hero catalog-hero--home" id="overview">
+          <span class="section-kicker">PdfEditor Platform</span>
+          <h1>Every tool you need to work with PDFs in one place</h1>
+          <p>
+            Browse the full catalog, open the working tools right away, and keep the rest visible as the roadmap grows.
+            Merge, split, compress, edit, convert, secure, and prepare PDFs from one clean workspace.
+          </p>
+          <div class="catalog-pill-row">
+            <span class="catalog-pill catalog-pill--active">All</span>
+            <span class="catalog-pill">Workflows</span>
+            <span class="catalog-pill">Organize PDF</span>
+            <span class="catalog-pill">Optimize PDF</span>
+            <span class="catalog-pill">Convert PDF</span>
+            <span class="catalog-pill">Edit PDF</span>
+            <span class="catalog-pill">PDF Security</span>
+            <span class="catalog-pill">PDF Intelligence</span>
+          </div>
+          <div class="hero-actions hero-actions--center">
+            <a class="primary-button" href="/compress">Compress PDF</a>
+            <a class="secondary-button" href="/edit">Edit PDF</a>
+            <a class="ghost-link" href="/all-tools">Open full catalog</a>
+          </div>
+        </section>
+
+        <section class="page-section feature-band feature-band--dense" id="features">
+          <div class="tool-card-grid tool-card-grid--showcase">
+            <a class="tool-card tool-card--active tool-card--rich" href="/merge">
+              <span class="tool-card-icon tool-card-icon--coral" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M7 7h10"></path><path d="m13 3 4 4-4 4"></path><path d="M17 17H7"></path><path d="m11 13-4 4 4 4"></path></svg>
+              </span>
+              <strong>Merge PDF</strong>
+              <span>Combine PDFs in the order you want with the easiest PDF merger available.</span>
+            </a>
+            <a class="tool-card tool-card--active tool-card--rich" href="/split">
+              <span class="tool-card-icon tool-card-icon--orange" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M8 4v16"></path><path d="m4 8 4-4 4 4"></path><path d="m4 16 4 4 4-4"></path><path d="M16 4v16"></path><path d="m12 8 4-4 4 4"></path><path d="m12 16 4 4 4-4"></path></svg>
+              </span>
+              <strong>Split PDF</strong>
+              <span>Separate one page or a full range into smaller independent PDF files.</span>
+            </a>
+            <a class="tool-card tool-card--active tool-card--rich" href="/compress">
+              <span class="tool-card-icon tool-card-icon--green" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M12 4v10"></path><path d="m8 10 4 4 4-4"></path><path d="M5 18h14"></path></svg>
+              </span>
+              <strong>Compress PDF</strong>
+              <span>Reduce file size while keeping the PDF ready for download or saving.</span>
+            </a>
+            <article class="tool-card tool-card--soon tool-card--rich">
+              <span class="tool-card-icon tool-card-icon--blue">W</span>
+              <strong>PDF to Word</strong>
+              <span>Offline DOCX conversion is next in line in the free conversion pipeline.</span>
+            </article>
+            <article class="tool-card tool-card--soon tool-card--rich">
+              <span class="tool-card-icon tool-card-icon--peach">P</span>
+              <strong>PDF to PowerPoint</strong>
+              <span>Slide-ready export is planned as part of the Office conversion track.</span>
+            </article>
+            <article class="tool-card tool-card--soon tool-card--rich">
+              <span class="tool-card-icon tool-card-icon--mint">X</span>
+              <strong>PDF to Excel</strong>
+              <span>Structured table extraction will follow the first Office conversion pass.</span>
+            </article>
+            <article class="tool-card tool-card--soon tool-card--rich">
+              <span class="tool-card-icon tool-card-icon--indigo">W</span>
+              <strong>Word to PDF</strong>
+              <span>Convert Word documents into clean PDFs through the local conversion stack.</span>
+            </article>
+            <article class="tool-card tool-card--soon tool-card--rich">
+              <span class="tool-card-icon tool-card-icon--salmon">P</span>
+              <strong>PowerPoint to PDF</strong>
+              <span>Turn decks into shareable PDFs with one export flow.</span>
+            </article>
+            <article class="tool-card tool-card--soon tool-card--rich">
+              <span class="tool-card-icon tool-card-icon--jade">X</span>
+              <strong>Excel to PDF</strong>
+              <span>Spreadsheet-to-PDF export remains on the conversion roadmap.</span>
+            </article>
+            <a class="tool-card tool-card--active tool-card--rich" href="/edit">
+              <span class="tool-card-icon tool-card-icon--purple" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="m4 20 4.5-1 9.8-9.8a2.1 2.1 0 0 0-3-3L5.5 16 4 20z"></path><path d="m13 6 5 5"></path></svg>
+              </span>
+              <strong>Edit PDF</strong>
+              <span>Open a fullscreen editor with page thumbnails, rotate, delete, and reorder.</span>
+            </a>
+            <a class="tool-card tool-card--active tool-card--rich" href="/edit#ocr-workspace">
+              <span class="tool-card-icon tool-card-icon--gold">OCR</span>
+              <strong>OCR PDF</strong>
+              <span>Turn scanned PDFs into searchable, editable text inside the same editor workspace.</span>
+            </a>
+            <article class="tool-card tool-card--soon tool-card--rich">
+              <span class="tool-card-icon tool-card-icon--sky">TR</span>
+              <strong>Translate PDF</strong>
+              <span>Offline translation stays on the active roadmap with layout preservation.</span>
+            </article>
+          </div>
+        </section>
+
+        <section class="page-section marketing-grid marketing-grid--feature" id="about">
+          <article class="marketing-card marketing-card--illustrated">
+            <span class="marketing-eyebrow">Use tools first</span>
+            <h3>Guests can upload and work immediately</h3>
+            <p>Compression, merging, splitting, and page editing all run before sign-in. Accounts are only required when you want to save history and versions.</p>
+          </article>
+          <article class="marketing-card marketing-card--illustrated">
+            <span class="marketing-eyebrow">Work your way</span>
+            <h3>Fullscreen editing when a PDF is loaded</h3>
+            <p>The editor opens into a large workspace with thumbnails on the left, a live viewer in the middle, and focused tools on the right.</p>
+          </article>
+          <article class="marketing-card marketing-card--illustrated">
+            <span class="marketing-eyebrow">Built to grow</span>
+            <h3>Architecture ready for the next wave</h3>
+            <p>The app keeps clean API, application, domain, and infrastructure boundaries so OCR and conversion work can land without rewriting the core.</p>
+          </article>
+        </section>
+
+        <section class="footer-shell" id="help">
+          <div class="footer-inner">
+            <div>
+              <strong>PdfEditor</strong>
+              <p>Modern PDF workflows with a cleaner, extensible architecture.</p>
+            </div>
+            <div class="footer-links">
+              <a href="/merge">Merge PDF</a>
+              <a href="/split">Split PDF</a>
+              <a href="/compress">Compress PDF</a>
+              <a href="/edit">Edit PDF</a>
+              <a href="/all-tools">All tools</a>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+    <script src="/app.phase1.js?v=20260423-2"></script>
+  </body>
+</html>
+
+
+
+
+
+
+

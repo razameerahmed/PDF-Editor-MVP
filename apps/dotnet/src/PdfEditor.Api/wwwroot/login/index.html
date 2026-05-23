@@ -1,0 +1,60 @@
+﻿<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Login | PdfEditor</title>
+<link rel="stylesheet" href="/app.phase1.css?v=20260423-2" />
+  </head>
+  <body data-page="login">
+    <div class="site-shell">
+      <header class="site-header">
+        <div class="site-header-inner">
+          <a class="brand-lockup" href="/">
+            <span class="brand-badge">PDF</span>
+            <span class="brand-wordmark">PdfEditor</span>
+          </a>
+          <nav class="site-nav">
+            <a data-nav-link="merge" href="/merge">Merge PDF</a>
+            <a data-nav-link="split" href="/split">Split PDF</a>
+            <a data-nav-link="compress" href="/compress">Compress PDF</a>
+            <a href="/all-tools#convert-tools">Convert PDF</a>
+            <div class="nav-dropdown">
+              <a data-nav-link="all-tools" href="/all-tools">All PDF Tools</a>
+            </div>
+          </nav>
+          <div class="topbar-actions" data-auth-actions></div>
+        </div>
+      </header>
+
+      <main class="auth-layout">
+        <section class="auth-card">
+          <span class="section-kicker">Login</span>
+          <h1>Sign in when you want to save your work.</h1>
+          <p>Guest tool use stays open. Authentication is only required when you want to keep the finished document in your account.</p>
+          <form id="login-form" class="panel-form">
+            <label>
+              <span>Email address</span>
+              <input id="email-address" type="email" value="owner@pdfeditor.local" />
+            </label>
+            <label>
+              <span>Password</span>
+              <input id="password" type="password" value="Password123!" />
+            </label>
+            <button class="primary-button wide-button" type="submit">Login</button>
+          </form>
+          <div id="login-status" class="status-line">Enter your credentials to continue.</div>
+          <a class="ghost-link" href="/signup">Need an account? Sign up</a>
+        </section>
+      </main>
+    </div>
+<script src="/app.phase1.js?v=20260423-2"></script>
+  </body>
+</html>
+
+
+
+
+
+
+

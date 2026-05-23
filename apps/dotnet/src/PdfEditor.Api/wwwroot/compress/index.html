@@ -1,0 +1,121 @@
+﻿<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Compress PDF | PdfEditor</title>
+<link rel="stylesheet" href="/app.phase1.css?v=20260423-2" />
+  </head>
+  <body data-page="compress">
+    <div class="site-shell">
+      <header class="site-header">
+        <div class="site-header-inner">
+          <a class="brand-lockup" href="/">
+            <span class="brand-badge">PDF</span>
+            <span class="brand-wordmark">PdfEditor</span>
+          </a>
+          <nav class="site-nav">
+            <a data-nav-link="merge" href="/merge">Merge PDF</a>
+            <a data-nav-link="split" href="/split">Split PDF</a>
+            <a data-nav-link="compress" href="/compress">Compress PDF</a>
+            <a href="/all-tools#convert-tools">Convert PDF</a>
+            <div class="nav-dropdown">
+              <a data-nav-link="all-tools" href="/all-tools">All PDF Tools</a>
+              <div class="nav-mega">
+                <div class="nav-mega-column">
+                  <span class="nav-mega-heading">Organize PDF</span>
+                  <a href="/merge">Merge PDF</a>
+                  <a href="/split">Split PDF</a>
+                  <a href="/edit">Edit PDF</a>
+                </div>
+                <div class="nav-mega-column">
+                  <span class="nav-mega-heading">Optimize PDF</span>
+                  <a href="/compress">Compress PDF</a>
+                  <a href="/edit#ocr-workspace">OCR PDF</a>
+                </div>
+                <div class="nav-mega-column">
+                  <span class="nav-mega-heading">Convert PDF</span>
+                  <span class="nav-mega-soon">PDF to Word · Coming soon</span>
+                  <span class="nav-mega-soon">PDF to PowerPoint · Coming soon</span>
+                </div>
+              </div>
+            </div>
+          </nav>
+          <div class="topbar-actions" data-auth-actions></div>
+        </div>
+      </header>
+
+      <main class="workspace-root">
+        <section class="tool-hero">
+          <span class="section-kicker">Compress PDF</span>
+          <h1>Reduce PDF size without leaving the browser.</h1>
+          <p>Upload a PDF, run real compression, preview the result, then download or save it into your account.</p>
+        </section>
+
+        <section class="tool-workspace">
+          <section class="workspace-canvas-panel">
+            <div id="compress-session-summary" class="session-meta-grid empty-state">
+              <div class="meta-card empty-card">
+                <strong>No PDF loaded yet</strong>
+                <span>Upload a PDF on the right to start a real compression session.</span>
+              </div>
+            </div>
+            <div class="viewer-canvas">
+              <iframe id="compress-pdf-viewer" class="pdf-viewer" title="Compressed PDF preview"></iframe>
+            </div>
+          </section>
+
+          <aside class="workspace-sidebar">
+            <div class="sidebar-panel">
+              <h2>Upload PDF</h2>
+              <form id="compress-upload-form" class="panel-form">
+                <label>
+                  <span>Document title</span>
+                  <input id="compress-title" type="text" placeholder="Leave blank to use the file name" />
+                </label>
+                <label>
+                  <span>PDF file</span>
+                  <input id="compress-file" class="file-input" type="file" accept="application/pdf,.pdf" />
+                </label>
+                <button class="primary-button wide-button" type="submit">Upload PDF</button>
+              </form>
+              <div id="compress-status" class="status-line">Upload a PDF to begin the compression flow.</div>
+            </div>
+
+            <div class="sidebar-panel">
+              <h3>Compression profile</h3>
+              <label>
+                <span>Profile</span>
+                <select id="compress-profile">
+                  <option value="HighQuality">HighQuality</option>
+                  <option value="Balanced" selected>Balanced</option>
+                  <option value="MaximumCompression">MaximumCompression</option>
+                </select>
+              </label>
+              <button id="run-compression" class="primary-button wide-button" type="button">Compress PDF</button>
+              <div id="compress-result" class="result-card">
+                <strong>No compression run yet.</strong>
+                <span>Compression stats will appear here after the run finishes.</span>
+              </div>
+            </div>
+
+            <div class="sidebar-panel">
+              <h3>Output actions</h3>
+              <button id="save-compressed-document" class="secondary-button wide-button" type="button">Save to my documents</button>
+              <a id="download-compressed-file" class="ghost-button wide-button disabled-link" href="#" aria-disabled="true">Download current PDF</a>
+            </div>
+          </aside>
+        </section>
+      </main>
+    </div>
+<script src="/app.phase1.js?v=20260423-2"></script>
+  </body>
+</html>
+
+
+
+
+
+
+
+
